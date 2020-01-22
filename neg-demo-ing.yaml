@@ -1,0 +1,12 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: neg-demo-ing
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: ping-static-ip
+    kubernetes.io/ingress.allow-http: "false"
+    ingress.gcp.kubernetes.io/pre-shared-cert: "ping-ssl"
+spec:
+  backend:
+    serviceName: neg-demo-svc
+    servicePort: neg-demo-port
